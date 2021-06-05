@@ -9,10 +9,7 @@ import java.net.URL;
  */
 public class ConcurrentCrawler extends BaseCrawler {
 
-    private final int numberOfThreads;
-
     public ConcurrentCrawler(int threads) throws IOException {
-        this.numberOfThreads = threads;
     }
 
     public static void main(String[] args) throws IOException {

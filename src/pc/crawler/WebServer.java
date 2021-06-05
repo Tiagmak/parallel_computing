@@ -9,6 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.URLConnection;
 import java.util.Date;
+import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -74,7 +75,7 @@ public class WebServer {
                 }
             }
             out.println("</b>");
-            for (String f : directory.list()) {
+            for (String f : Objects.requireNonNull(directory.list())) {
                 out.printf("<li><a href=\"%s%s\">%s</a></li>%n", path, f, f);
             }
             out.printf("</ul>%n</p>%n</body>%n</html>%n");
@@ -154,7 +155,7 @@ public class WebServer {
     }
 
     @SuppressWarnings("deprecation")
-    private final void log(String format, Object... args) {
+    private void log(String format, Object... args) {
         synchronized (LOG_MUTEX) {
             String msg = String.format("%s | %s", new Date().toGMTString(),
                     String.format(format, args));

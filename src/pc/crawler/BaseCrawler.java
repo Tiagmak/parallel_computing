@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 public abstract class BaseCrawler {
 
     private static final Pattern HTML_LINK_REGEX = Pattern
-            .compile("\\<a\\s+href\\=\"(.*?)\"");
+            .compile("<a\\s+href=\"(.*?)\"");
     private final PrintStream log;
     private final Object LOG_MUTEX = new Object();
     private boolean verbose = false;
@@ -99,9 +99,7 @@ public abstract class BaseCrawler {
                 }
                 sin.nextLine();
             }
-        } catch (FileNotFoundException e) {
-            log("Error: %s - %s", e.getClass().getName(), e.getMessage());
-        } catch (MalformedURLException e) {
+        } catch (FileNotFoundException | MalformedURLException e) {
             log("Error: %s - %s", e.getClass().getName(), e.getMessage());
         }
         return links;

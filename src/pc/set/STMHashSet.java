@@ -10,14 +10,13 @@ import scala.concurrent.stm.japi.STM;
 public class STMHashSet<E> implements ISet<E> {
 
     private static final int NUMBER_OF_BUCKETS = 16; // should not be changed 
-    private final TArray.View<Node<E>> table;
     private final Ref.View<Integer> size;
 
     /**
      * Constructor.
      */
     public STMHashSet() {
-        table = STM.newTArray(NUMBER_OF_BUCKETS);
+        TArray.View<Node<E>> table = STM.newTArray(NUMBER_OF_BUCKETS);
         size = STM.newRef(0);
     }
 

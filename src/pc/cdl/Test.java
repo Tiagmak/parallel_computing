@@ -50,9 +50,7 @@ public class Test {
             });
             aw.setName("AW" + i);
             aw.start();
-            Thread cd = new Thread(() -> {
-                cdl.countDown();
-            });
+            Thread cd = new Thread(cdl::countDown);
             cd.setName("CD" + i);
             cd.start();
 
