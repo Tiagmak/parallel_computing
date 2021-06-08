@@ -3,7 +3,7 @@ package pc.set;
 import java.util.LinkedList;
 
 /**
- * Non-concurrent hash set implementation.
+ * Non-concurrent hash set implementation with synchronized methods.
  */
 public class LHashSet0<E> implements ISet<E> {
 
@@ -17,14 +17,14 @@ public class LHashSet0<E> implements ISet<E> {
     @SuppressWarnings("unchecked")
     public LHashSet0() {
         table = (LinkedList<E>[]) new LinkedList[NUMBER_OF_BUCKETS];
-        for (int i = 0; i < table.length; i++) {
+        for (int i = 0; i < table.length; ++i) {
             table[i] = new LinkedList<>();
         }
         size = 0;
     }
 
     @Override
-    public int size() {
+    public synchronized int size() {
         return size;
     }
 
@@ -41,7 +41,7 @@ public class LHashSet0<E> implements ISet<E> {
         boolean r = !list.contains(elem);
         if (r) {
             list.addFirst(elem);
-            size++;
+            ++size;
         }
         return r;
     }
@@ -53,7 +53,7 @@ public class LHashSet0<E> implements ISet<E> {
         }
         boolean r = getEntry(elem).remove(elem);
         if (r) {
-            size--;
+            --size;
         }
         return r;
     }
