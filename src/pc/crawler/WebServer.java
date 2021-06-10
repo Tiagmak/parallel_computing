@@ -51,7 +51,7 @@ public class WebServer {
      * @throws IOException if an error occurs during server creation.
      */
     public static void main(String[] args) throws IOException {
-        String home = args.length >= 1 ? args[0] : "cooperari-0.4/doc/javadoc";
+        String home = args.length >= 1 ? args[0] : "jdk8-javadoc";
         int threads = args.length >= 2 ? Integer.parseInt(args[1]) : 4;
         int port = args.length >= 3 ? Integer.parseInt(args[2]) : 8123;
 

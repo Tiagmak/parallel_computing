@@ -11,7 +11,7 @@ public class SetBenchmark {
 
     private static final int DURATION = 10;
     private static final int MAX_THREADS = 8;
-    private static final int N = 256;
+    private static final int N = 5000;
 
     @SuppressWarnings("unchecked")
     public static void main(String[] args) throws Exception {

@@ -42,7 +42,7 @@ public class ConcurrentCrawler extends BaseCrawler {
         int threads = args.length > 0 ? Integer.parseInt(args[0]) : 4;
         String rootPath = args.length > 1 ? args[1] : "http://localhost:8123";
         ConcurrentCrawler cc = new ConcurrentCrawler(threads);
-        cc.setVerboseOutput(true);
+        cc.setVerboseOutput(false);
         cc.crawl(new URL(rootPath));
         cc.stop();
     }
